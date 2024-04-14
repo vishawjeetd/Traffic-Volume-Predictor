@@ -38,7 +38,7 @@ Welcome to the Traffic Volume Prediction Hackathon repository! In this project, 
 - *weather_main* and *weather_description* can derive from each other
 - Weekday analysis: We can observe that traffic is more on weekdays compared to weekend.
 If we create categorical variable around it, it can help model to understand this seasonality.
-![weekday_analysis](github.com/vishawjeetd/Traffic-Volume-Predictor/blob/main/img/average_traffic_volume_by_day_of_the_week.png?raw=true)
+![weekday_analysis](https://github.com/vishawjeetd/Traffic-Volume-Predictor/blob/main/img/average_traffic_volume_by_day_of_the_week.png?raw=true)
 - Analysing new holiday data : By observing below plot,we can say that we don't get same spikes traffic volume for every holiday.
 Instead of creating binary categorical variable, we can create ordinal variable using holiday data.
 

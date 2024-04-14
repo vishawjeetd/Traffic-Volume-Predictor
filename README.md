@@ -90,11 +90,11 @@ The table below summarizes the results of our model evaluations:
 
 | Experiment Name                                        | Test MSE       |
 |-------------------------------------------------------|----------------|
-| Exp 1 - Base Model - Linear Regression               | 1182175.334    |
-| Exp 2 - Bayesian Ridge Linear Regression             | 1181813.387    |
-| Exp 3 - Random Forest Regressor without Hyper Parameter Tuning | 132295.172     |
-| Exp 4 - XGBoost without Hyper Parameter Tuning       | 100346.3723    |
-| Exp 5 - XGBoost with Hyper Parameter Tuning          | 92350.75562    |
+| Exp 1 - Base Model - Linear Regression               | 11,82,175.334    |
+| Exp 2 - Bayesian Ridge Linear Regression             | 11,81,813.387    |
+| Exp 3 - Random Forest Regressor without Hyper Parameter Tuning | 1,32,295.172     |
+| Exp 4 - XGBoost without Hyper Parameter Tuning       | 1,00,346.3723    |
+| Exp 5 - XGBoost with Hyper Parameter Tuning          | 92,350.75562    |
 
 With concerted efforts in data analysis, feature engineering, and model selection, we achieved remarkable results, leading us to secure a top position on the leaderboard in the hackathon.
 
@@ -114,3 +114,10 @@ The code is built on Google Colab on an iPython Notebook.
 ```bash
 Simply download the repository, upload the notebook and dataset on colab and update data path, and hit play!
 ```
+
+## Contributors
+
+I would like to acknowledge the following team members for their valuable contributions to this project:
+
+- Sonti Roy
+- Manoj David

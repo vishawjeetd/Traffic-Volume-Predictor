@@ -12,7 +12,9 @@ Welcome to the Traffic Volume Prediction Hackathon repository! In this project, 
 
 
 
+
 ## Quick Data Overview
+
 - **Files**:
     -  train_set_dirty.csv - the training set with input features and GT value for 'traffic_volume'
 
@@ -31,23 +33,84 @@ Welcome to the Traffic Volume Prediction Hackathon repository! In this project, 
     - traffic_volume: a numeric variable that shows the hourly I-94 reported westbound traffic volume.
 
 ## EDA Insights
-- Duplicates at *date_time* level
-- *holiday* data is not mapped correctly
-- Data has cyclical nature based on hours
-![date_time_analysis_with_traffic_volume](https://github.com/vishawjeetd/Traffic-Volume-Predictor/blob/main/img/traffic_volume_by_datetime.png?raw=true)
-- *weather_main* and *weather_description* can derive from each other
-- Weekday analysis: We can observe that traffic is more on weekdays compared to weekend.
-If we create categorical variable around it, it can help model to understand this seasonality.
-![weekday_analysis](https://github.com/vishawjeetd/Traffic-Volume-Predictor/blob/main/img/average_traffic_volume_by_day_of_the_week.png?raw=true)
-- Analysing new holiday data : By observing below plot,we can say that we don't get same spikes traffic volume for every holiday.
-Instead of creating binary categorical variable, we can create ordinal variable using holiday data.
 
-**Example:**
+During the exploratory data analysis (EDA) phase, we uncovered several key insights about the dataset:
 
-For Christmas Day, We are getting max traffic in between 1st and 2nd quartile so we can give value as 2
+1. **Duplicates at *date_time* level:** We identified duplicates within the dataset at the *date_time* level, which may require further investigation and cleaning to ensure data integrity.
 
-For Independance day and Christmas Eve, We are getting max traffic in between 2nd and 3rd quartile so we can give value as 3
-![holiday_analysis](https://github.com/vishawjeetd/Traffic-Volume-Predictor/blob/main/img/max_traffic_volume_by_new_holiday.png?raw=true)
+2. **Incorrect mapping of *holiday* data:** The *holiday* feature was found to be incorrectly mapped. Correcting this mapping is crucial for accurate analysis and model training.
 
+3. **Cyclical nature of data based on hours:** Analysis revealed a cyclical pattern in traffic volume based on hours of the day, indicating potential hourly trends that could be leveraged in modeling.
 
+   ![date_time_analysis_with_traffic_volume](https://github.com/vishawjeetd/Traffic-Volume-Predictor/blob/main/img/traffic_volume_by_datetime.png?raw=true)
 
+4. **Relationship between *weather_main* and *weather_description*:** We observed redundancy between these two features, suggesting that one could be derived from the other to simplify the dataset.
+
+5. **Weekday analysis:** Traffic volume varies throughout the week, with higher volumes observed on weekdays compared to weekends. Creating a categorical variable to capture this seasonality could enhance model performance.
+
+   ![weekday_analysis](https://github.com/vishawjeetd/Traffic-Volume-Predictor/blob/main/img/average_traffic_volume_by_day_of_the_week.png?raw=true)
+
+6. **Analysis of new holiday data:** By examining the relationship between holidays and traffic volume, we discovered that not all holidays result in the same traffic patterns. Instead of creating a binary categorical variable, we propose creating an ordinal variable based on traffic volume distribution during holidays.
+
+   **Example:**
+   
+   - For Christmas Day, the maximum traffic occurs between the 1st and 2nd quartiles, suggesting a value of 2 for this holiday.
+   - For Independence Day and Christmas Eve, the peak traffic falls between the 2nd and 3rd quartiles, indicating a value of 3.
+   
+   ![holiday_analysis](https://github.com/vishawjeetd/Traffic-Volume-Predictor/blob/main/img/max_traffic_volume_by_new_holiday.png?raw=true)
+
+These insights provide a foundation for data cleaning, feature engineering, and model development to improve traffic volume prediction accuracy.
+
+## Feature Engineering
+
+During the feature engineering phase, we implemented several strategies to enhance the predictive power of our models:
+
+1. **Temporal Features Extraction:** Extracted features such as day, month, year, weekday, and hour from the *date_time* feature to capture temporal patterns in traffic volume.
+
+2. **Cyclical Transformation:** Applied sine and cosine transformations on the hour feature to encode the cyclical nature of traffic volume throughout the day, enabling our models to better understand hourly trends.
+
+3. **Weekday Binary Variable:** Utilized insights from our EDA to create a binary variable indicating whether a day is a weekday or weekend. This categorical feature helps our models account for the varying traffic patterns between weekdays and weekends.
+
+4. **Ordinal Holiday Variable:** Leveraged findings from our EDA to construct an ordinal variable representing the impact of holidays on traffic volume. This ordinal variable allows our models to differentiate between holidays based on their observed traffic volume patterns.
+
+These feature engineering techniques serve to enrich the dataset with meaningful information, enabling our models to make more accurate predictions of traffic volume.
+
+## Model Training and Evaluation
+
+In this section, we trained and evaluated the performance of various machine learning models for traffic volume prediction. The following models were considered:
+
+1. Linear Regression
+2. Bayesian Linear Regression
+3. Random Forest
+4. XGBoost
+
+### Results
+
+The table below summarizes the results of our model evaluations:
+
+| Experiment Name                                        | Test MSE       |
+|-------------------------------------------------------|----------------|
+| Exp 1 - Base Model - Linear Regression               | 1182175.334    |
+| Exp 2 - Bayesian Ridge Linear Regression             | 1181813.387    |
+| Exp 3 - Random Forest Regressor without Hyper Parameter Tuning | 132295.172     |
+| Exp 4 - XGBoost without Hyper Parameter Tuning       | 100346.3723    |
+| Exp 5 - XGBoost with Hyper Parameter Tuning          | 92350.75562    |
+
+With concerted efforts in data analysis, feature engineering, and model selection, we achieved remarkable results, leading us to secure a top position on the leaderboard in the hackathon.
+
+![leader_board](https://github.com/vishawjeetd/Traffic-Volume-Predictor/blob/main/img/leaderboard.png?raw=true)
+
+## Implementation Details
+
+### Technical Details
+- **Programming Language:** Python
+- **Packages Used:** sklearn, pandas, numpy, seaborn, xgboost
+- **Code file:** [traffic-volume-prediction.ipynb](https://github.com/vishawjeetd/Traffic-Volume-Predictor/blob/main/src/traffic-volume-prediction.ipynb)
+
+## How to Run
+
+The code is built on Google Colab on an iPython Notebook. 
+
+```bash
+Simply download the repository, upload the notebook and dataset on colab and update data path, and hit play!
+```
